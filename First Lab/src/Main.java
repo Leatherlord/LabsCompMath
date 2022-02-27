@@ -28,6 +28,7 @@ public class Main {
                     <b2>
                     . . .
                     <b_<how_many_dimensions>>
+                    <accuracy>
                     Then type in 'y' (for yes) when it's ready.""");
             while (!scanner.nextLine().equals("y")) {
                 System.out.println("Type in 'y' if ready");
@@ -46,8 +47,8 @@ public class Main {
                 for (int i = 0; i < dimensions; i++) {
                     coeffs[i] = Double.parseDouble(fileScanner.nextLine());
                 }
-
-                SimpleIterator.research(A, coeffs, 0.01d);
+                double acc = Double.parseDouble(fileScanner.nextLine());
+                SimpleIterator.research(A, coeffs, acc);
             } catch (FileNotFoundException e) {
                 System.out.println("No input.txt found");
                 System.exit(1);
@@ -69,12 +70,15 @@ public class Main {
             for (int i = 0; i < dimensions; i++) {
                 coeffs[i] = Double.parseDouble(scanner.nextLine());
             }
+            System.out.println("Type in accuracy level:");
+            double acc = Double.parseDouble(scanner.nextLine());
 
-            SimpleIterator.research(A, coeffs, 0.01d);
+            SimpleIterator.research(A, coeffs, acc);
 
         } else {
             System.out.println("Wrong option. Restart the program and try again");
             System.exit(1);
         }
+
     }
 }

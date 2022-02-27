@@ -4,6 +4,12 @@ public class SimpleIterator {
 
     public static void research(Matrix matrix, double[] freeCoefficients, double accuracy) {
         doDiagonalDominance(matrix, freeCoefficients);
+        for (int i = 0; i < matrix.getRows(); i++) {
+            for (int j = 0; j < matrix.getColumns(); j++) {
+                System.out.print(matrix.get(i, j) + " ");
+            }
+            System.out.println();
+        }
         transformMatrix(matrix, freeCoefficients);
         iterate(matrix, freeCoefficients, accuracy);
     }
@@ -28,7 +34,7 @@ public class SimpleIterator {
                     if (j < i) {
                         newValues[i] += matrix.get(i, j) * xi[j];
                     } else {
-                        newValues[i] += matrix.get(i, j) * xi[j+1];
+                        newValues[i] += matrix.get(i, j) * xi[j + 1];
                     }
                 }
             }
@@ -38,19 +44,19 @@ public class SimpleIterator {
             errors.add(currError);
             xi = newValues;
             if (iterations > 1000) {
-                System.out.println("Too many iterations");
+                System.out.println("Too many iterations (>1000)");
                 System.exit(1);
             }
 
         }
         System.out.print("X: ");
-        for(double x : xi) {
+        for (double x : xi) {
             System.out.printf("%.3f ", x);
         }
         System.out.print("\n");
         System.out.println("Iterations: " + iterations);
         System.out.print("Errors: ");
-        for(double error : errors) {
+        for (double error : errors) {
             System.out.printf("%1.4f ", error);
         }
         System.out.print("\n");
@@ -66,16 +72,16 @@ public class SimpleIterator {
         for (int i = 0; i < newMatrix.getRows(); i++) {
             for (int j = 0; j < newMatrix.getColumns() - 1; j++) {
                 if (j < i) {
-                    newMatrix.set(i, j, -newMatrix.get(i, j)/xC[i]);
+                    newMatrix.set(i, j, -newMatrix.get(i, j) / xC[i]);
                 } else {
-                    newMatrix.set(i, j, -newMatrix.get(i, j+1)/xC[i]);
+                    newMatrix.set(i, j, -newMatrix.get(i, j + 1) / xC[i]);
                 }
             }
             newMatrix.set(i, newMatrix.getColumns() - 1, freeCoefficients[i]);
         }
     }
 
-    private static void doDiagonalDominance(Matrix matrix, double[] freeCoefficients){
+    private static void doDiagonalDominance(Matrix matrix, double[] freeCoefficients) {
         for (int i = 0; i < matrix.getRows(); i++) {
             int sum = 0;
             for (int j = 0; j < matrix.getColumns(); j++) {

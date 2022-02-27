@@ -4,18 +4,8 @@ public class Matrix implements Cloneable {
 
 
     private final int rows;
-
-    public int getRows() {
-        return this.rows;
-    }
-
     private final int columns;
-
-    public int getColumns() {
-        return columns;
-    }
-
-    private ArrayList<Double> numbers;
+    private final ArrayList<Double> numbers;
 
     public Matrix(int rows, int columns) {
         this.rows = rows;
@@ -24,6 +14,14 @@ public class Matrix implements Cloneable {
         for (int i = 0; i < rows * columns; i++) {
             numbers.add((double) 0);
         }
+    }
+
+    public int getRows() {
+        return this.rows;
+    }
+
+    public int getColumns() {
+        return columns;
     }
 
     public ArrayList<Double> getRow(int num) {
