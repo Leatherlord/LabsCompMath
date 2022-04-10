@@ -29,6 +29,10 @@ public class Functions {
         return Math.pow(a, 3) - 1.89 * Math.pow(a, 2) - 2 * a + 1.76;
     }
 
+    public static double applyFunctionOneDiff(double x) {
+        return 3*Math.pow(x, 2) - 1.89*2*x - 2;
+    }
+
     public static double applyPhiOne(double a) {
         return (Math.pow(a, 3) - 1.89 * Math.pow(a, 2) + 1.76) / 2;
     }
@@ -37,8 +41,18 @@ public class Functions {
         return (3 * Math.pow(a, 2) - 1.89 * 2 * a) / 2;
     }
 
+
+
+
+
+
+
     public static double applyFunctionTwo(double a) { // sin(x) + 0.1x^2 + x
         return Math.sin(a) + Math.pow(a, 2) * 0.1 + a;
+    }
+
+    public static double applyFunctionTwoDiff(double x) {
+        return 0.2*x + Math.cos(x) + 1;
     }
 
     public static double applyPhiTwo(double a) {
@@ -49,8 +63,14 @@ public class Functions {
         return -(Math.cos(a) + 0.2 * a);
     }
 
+
+
     public static double applyFunctionThree(double a) { // 2cos^2(x)x + 0.2x^2 + x + 1.1
         return 2 * Math.pow(Math.cos(a), 2) * a + 0.2 * Math.pow(a, 2) + a + 1.1;
+    }
+
+    public static double applyFunctionThreeDiff(double x) {
+        return 0.4*x + 2*Math.pow(Math.cos(x), 2) - 4*Math.sin(x)*Math.cos(x)*x + 1;
     }
 
     public static double applyPhiThree(double a) {

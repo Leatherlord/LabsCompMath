@@ -19,7 +19,7 @@ public class TrapezeMethod implements IMethod {
             step /= 2;
             I_1 = cycle(function, left, step, n);
             iterations++;
-            if (iterations > 10) {
+            if (iterations > 1000) {
                 System.out.println("Iterations > 10 - probably we cannot approach any further");
                 break;
             }

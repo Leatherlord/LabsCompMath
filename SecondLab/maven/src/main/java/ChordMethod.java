@@ -40,7 +40,9 @@ public class ChordMethod {
             approxX = prevApproxX;
         } else {
             iterations = 0;
-            while ((Math.abs(approxX - prevApproxX) >= accuracy) || Math.abs((Double) function.invoke(null, approxX)) >= accuracy) {
+            while ((Math.abs(approxX - prevApproxX) >= accuracy)
+                    || Math.abs((Double) function.invoke(null, approxX)) >= accuracy
+            ) {
                 if (iterations > 1000) {
                     out.println("It's more than 1000 iterations past - seems like we cannot find solution");
                     return;

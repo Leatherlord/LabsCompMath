@@ -30,7 +30,7 @@ public class RectanglesMethod implements IMethod {
             point -= step * coefficient;
             I_1 = cycle(function, point, step, n);
             iterations++;
-            if (iterations > 10) {
+            if (iterations > 1000) {
                 System.out.println("Iterations > 10 - probably we cannot approach any further");
                 break;
             }

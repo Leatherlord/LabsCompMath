@@ -13,12 +13,14 @@ public class Main {
                 1) -2x^3 - 4x^2 + 8x - 4
                 2) sin(x)x
                 3) (asin(|(x^6)/8|)^sqrt(|0.4x|)   (Only exists on interval [-1.4 - ε; 1.4 + ε])
+                4) x^2
                 """);
         Method function = null;
         switch (scanner.nextInt()) {
             case 1 -> function = Functions.class.getMethod("functionOne", double.class);
             case 2 -> function = Functions.class.getMethod("functionTwo", double.class);
             case 3 -> function = Functions.class.getMethod("functionThree", double.class);
+            case 4 -> function = Functions.class.getMethod("functionFour", double.class);
             default -> {
                 System.out.println("Wrong function. Terminating...");
                 System.exit(1);

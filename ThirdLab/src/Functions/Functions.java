@@ -14,4 +14,8 @@ public class Functions {
         return Math.pow(Math.asin(Math.abs(Math.pow(x, 6) / 8)), Math.sqrt(Math.abs(0.4 * x)));
     }
 
+    public static double functionFour(double x) {
+        return x*x;
+    }
+
 }

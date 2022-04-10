@@ -20,8 +20,8 @@ public class SimpleIterationForSystemMethod {
             }
         }
 
-        double prevY = 1;
-        double prevX = 1;
+        double prevY = 0.2;
+        double prevX = 0.6;
         double y = applyPhi2(prevX, prevY);
         double x = applyPhi1(prevX, prevY);
 
@@ -31,8 +31,12 @@ public class SimpleIterationForSystemMethod {
         ArrayList<Double> yErrors = new ArrayList<>();
 
 
-        while (Math.max(Math.abs(x - prevX), Math.abs(y - prevY)) > accuracy) {
-            if (iterations > 1000) {
+        while (
+                Math.max(Math.abs(x - prevX), Math.abs(y - prevY)) > accuracy
+//                        ||
+//                Math.max(Math.abs(applyFunctionOne(x, y)), Math.abs(applyFunctionTwo(x,y))) > accuracy
+        ) {
+            if (iterations > 10000) {
                 out.println("It's more than 1000 iterations past - seems like we cannot find solution");
                 return;
             }
@@ -40,20 +44,27 @@ public class SimpleIterationForSystemMethod {
             prevX = x;
             y = applyPhi2(prevX, prevY);
             x = applyPhi1(prevX, prevY);
+            System.out.println(x + " " + y + " " + applyFunctionOne(x, y) + " " + applyFunctionTwo(x,y));
             xErrors.add(Math.abs(x - prevX));
             yErrors.add(Math.abs(y - prevY));
             iterations++;
+//            if (Math.abs(applyFunctionOne(x, y)) < accuracy && Math.abs(applyFunctionTwo(x,y)) < accuracy) {
+//                break;
+//            }
         }
         out.printf("""
                 For system of two equations for simple iteration method:
                 1) 0.1x^2 + x + 0.2y^2 - 0.3 = 0
                 2) 0.2x^2 + y - 0.1xy - 0.7 = 0
                 With accuracy taken as: %f
-                Approximation for X: %.3f
-                Approximation for Y: %.3f
+                Approximation for X: %f
+                Approximation for Y: %f
+                f1(x, y): %f
+                f2(x, y): %f
                 Iterations: %d
+                
                                 
-                """, accuracy, x, y, iterations);
+                """, accuracy, x, y, applyFunctionOne(x, y), applyFunctionTwo(x, y), iterations);
         out.println("Errors for X:");
         for (double error : xErrors) {
             out.printf("%.3f ", error);
@@ -70,6 +81,14 @@ public class SimpleIterationForSystemMethod {
         frame.add(new MyPanel(image));
         frame.setBounds(200, 200, 940, 500);
         frame.setVisible(true);
+    }
+
+    private static double applyFunctionOne(double x, double y) {
+        return 0.1*Math.pow(x,2) + x + 0.2*Math.pow(y, 2) - 0.3;
+    }
+
+    private static double applyFunctionTwo(double x, double y) {
+        return 0.2*Math.pow(x,2) + y - 0.1*x*y - 0.7;
     }
 
     private static double applyPhi1(double x, double y) {
